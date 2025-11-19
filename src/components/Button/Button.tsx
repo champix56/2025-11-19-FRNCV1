@@ -1,23 +1,22 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-
+import { View } from 'react-native';
+import style from './Button.style';
 interface IButtonProps {
   children: any;
   meta?: string;
+  bgcolor: 'tomato' | 'skyblue';
 }
 const Button: React.FC<IButtonProps> = ({
   children,
   meta = 'defaultValue',
+  bgcolor = 'tomato',
 }) => {
   console.log(meta);
-  return <View style={style.container}>{children}</View>;
+  return (
+    <View style={[style.container, { backgroundColor: bgcolor }]}>
+      {children}
+    </View>
+  );
 };
-
-const style = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    backgroundColor: 'skyblue',
-  },
-});
 
 export default Button;
