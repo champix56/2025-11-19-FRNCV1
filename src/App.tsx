@@ -19,8 +19,7 @@ function App() {
         <Button>
           <Text>drftgyhujikol</Text>
         </Button>
-        <Button />
-        <Button />
+         
       </View>
     </SafeAreaProvider>
   );
