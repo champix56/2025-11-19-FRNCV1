@@ -16,11 +16,11 @@ function App() {
     <SafeAreaProvider>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <View>
-        <Button/>
-        <Button/>
-        <Button/>
-        <Button/>
-        <Button/>
+        <Button>
+          <Text>drftgyhujikol</Text>
+        </Button>
+        <Button />
+        <Button />
       </View>
     </SafeAreaProvider>
   );

@@ -1,10 +1,15 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-const Button = () => {
+interface IButtonProps {
+  children: any;
+  meta?: string;
+}
+const Button: React.FC<IButtonProps> = ({ children, meta = 'defaultValue' }) => {
+  console.log(meta);
   return (
     <View>
-      <Text>Demat</Text>
+      <Text>{children}</Text>
     </View>
   );
 };
