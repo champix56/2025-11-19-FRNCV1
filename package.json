@@ -8,7 +8,9 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "restapi":"json-server -p 5679 db.json"
+    "json":"json-server -p 5679 -H 0.0.0.0 db.json",
+    "adb:reverse":"adb reverse tcp:5679 tcp:5679",
+    "restapi":"npm run adb:reverse && npm run json"
   },
   "dependencies": {
     "@react-native/new-app-screen": "0.82.1",
