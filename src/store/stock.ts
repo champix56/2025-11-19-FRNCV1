@@ -25,20 +25,6 @@ const stock = createSlice({
       state.loaded = false;
     },
   },
-  extraReducers: builder => {
-    builder.addCase('cart/addProductToCart', (state, action) => {
-      console.log(
-        '%c%s',
-        'color:red;font-size:25pt;font-weight:900;',
-        'stock extra reducer addProductToCart case',
-      );
-      console.log(action, state);
-    });
-
-    builder.addDefaultCase((state, action) => {
-      console.log('stock extra reducer default case', state, action);
-    });
-  },
 });
 
 export const { resetStock, addProductToStock } = stock.actions;
