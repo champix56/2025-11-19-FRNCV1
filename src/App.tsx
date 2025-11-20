@@ -5,6 +5,7 @@
  * @format
  */
 
+import { useEffect, useState } from 'react';
 import {
   Alert,
   StatusBar,
@@ -17,11 +18,27 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 //import ProductListItem from './components/ProductListItem/ProductListItem';
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
-  let counter = 0;
+  const [counter, setcounter] = useState(0);
+  const [counter2, setcounter2] = useState(100);
+  useEffect(() => {
+    console.log('counter1:' + counter);
+  }, [counter]);
+
+  useEffect(() => {
+    console.log('init component');
+    setcounter(1);
+    setcounter2(101);
+    return () => {
+      console.log('demontage du composant');
+    };
+  }, []);
+  // useEffect(() => {
+  //  console.log('tous les refresh!!!!!!');  
+  // })
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <View style={{ marginTop: 10, paddingVertical: 5 }}>
+      {/* <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} /> */}
+      <View style={{ paddingTop: 25 }}>
         {/* <View>
           <ProductListItem
             produit={{
@@ -56,8 +73,18 @@ function App() {
           <Button
             title="Ajouter 1"
             onPress={() => {
-              console.log(counter);
-              counter++;
+              setcounter(counter + 1);
+              //console.log(counter);
+            }}
+          />
+        </View>
+        <View style={{ borderTopWidth: 1, borderTopColor: 'black' }}>
+          <Text style={{ textAlign: 'center' }}>Counter : {counter2}</Text>
+          <Button
+            title="Ajouter 1 a c2"
+            onPress={() => {
+              setcounter2(counter2 + 1);
+              //console.log(counter);
             }}
           />
         </View>
