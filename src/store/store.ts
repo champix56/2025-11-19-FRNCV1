@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import stockReducer, { addProductToStock } from './stock';
 import {products} from '../../db.json'
+import cartReducer, {addProductToCart, removeQuantityProductInCartById} from './cart';
 const store = configureStore({
-  reducer: stockReducer,
+  reducer: {stock:stockReducer, cart:cartReducer},
 });
 
 
@@ -24,3 +25,12 @@ store.subscribe(() => {
 store.dispatch(addProductToStock(products[0]));
 store.dispatch(addProductToStock(products[1]));
 store.dispatch(addProductToStock(products[2])); 
+
+store.dispatch(addProductToCart(products[0]));
+store.dispatch(addProductToCart(products[0]));
+store.dispatch(addProductToCart(products[2]));
+store.dispatch(addProductToCart(products[2]));
+store.dispatch(addProductToCart(products[2]));
+
+store.dispatch(removeQuantityProductInCartById(products[2].id));
+
