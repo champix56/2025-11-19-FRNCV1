@@ -2,13 +2,18 @@ import { Button } from 'react-native';
 import React from 'react';
 import store from '../../store/store';
 import { addProductToStock } from '../../store/stock';
+interface IAddProductButtonProps {
+  onClick: () => void;
+}
+const AddProductButton = (props: IAddProductButtonProps) => {
+  return <Button title="add empty product" onPress={props.onClick} />;
+};
 
-const AddProductButton = () => {
+export const AddProductButtonConnected = () => {
   const dispatch = store.dispatch;
   return (
-    <Button
-      title="add empty product"
-      onPress={() => {
+    <AddProductButton
+      onClick={() => {
         dispatch(
           addProductToStock({
             name: 'Produit vide',

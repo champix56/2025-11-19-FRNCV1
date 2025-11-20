@@ -4,18 +4,12 @@ import ProductListItem from '../ProductListItem/ProductListItem';
 import { IProductListItem } from '../../interfaces/IProducts';
 import store from '../../store/store';
 interface IProductListProps {
-  //   products: Array<IProductListItem>;
+  products: Array<IProductListItem>;
   height?: number;
 }
 
-const ProductList = ({ height = 350 }: IProductListProps) => {
-  const [products, setproducts] = useState<Array<IProductListItem>>([]);
-  useEffect(() => {
-    setproducts(store.getState().stock.products);
-    store.subscribe(() => {
-      setproducts(store.getState().stock.products);
-    });
-  }, []);
+const ProductList = ({products, height = 350 }: IProductListProps) => {
+  
   return (
     <ScrollView style={{ height: height }}>
       {products.map(item => (
@@ -24,5 +18,6 @@ const ProductList = ({ height = 350 }: IProductListProps) => {
     </ScrollView>
   );
 };
+
 
 export default ProductList;
