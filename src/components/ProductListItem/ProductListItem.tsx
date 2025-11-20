@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, Button } from 'react-native';
 import React from 'react';
 interface IProductListItem {
   id?: number;
@@ -17,9 +17,25 @@ const ProductListItem: React.FC<IProductListItemProps> = ({ produit }) => {
         <Image source={{ uri: produit.img }} style={style.image} />
       </View>
       <View style={style.textContainer}>
-        <Text style={style.text}>Nom:<Text style={style.textValue}>{produit.name}</Text></Text>
-        <Text style={style.text}>Prix:<Text style={style.textValue}>{produit.prix}€</Text></Text>
-        <Text style={style.text}>Stock:<Text style={style.textValue}>{produit.stock}</Text></Text>
+        <Text style={style.text}>
+          Nom:<Text style={style.textValue}>{produit.name}</Text>
+        </Text>
+        <Text style={style.text}>
+          Prix:<Text style={style.textValue}>{produit.prix}€</Text>
+        </Text>
+
+        <Text style={style.text}>
+          Stock:
+          <Text
+            style={[
+              style.textValue,
+              produit.stock > 0 ? style.stockPositive : style.stockNull,
+            ]}
+          >
+            {produit.stock}
+          </Text>
+        </Text>
+        {produit.stock > 0 && <Button title="Ajouter au panier" />}
       </View>
     </View>
   );
@@ -27,28 +43,34 @@ const ProductListItem: React.FC<IProductListItemProps> = ({ produit }) => {
 const style = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    borderColor:'grey',
-    borderWidth:2,
-    borderRadius:5,
-    marginBottom:5
+    borderColor: 'grey',
+    borderWidth: 2,
+    borderRadius: 5,
+    marginBottom: 5,
   },
   imageContainer: {
-    padding:5
+    padding: 5,
   },
   textContainer: {
     flexGrow: 1,
-    paddingVertical:5,
-    justifyContent:'space-between'
+    paddingVertical: 5,
+    justifyContent: 'space-between',
   },
   image: {
     width: 96,
     height: 96,
   },
-  text:{
-
+  text: {},
+  textValue: {
+    fontWeight: '900',
+    fontSize: 14,
   },
-  textValue:{
-    fontWeight:"900"
-  }
+  stockPositive: {
+    color: 'green',
+  },
+  stockNull: {
+    color: 'red',
+    fontSize: 10,
+  },
 });
 export default ProductListItem;
