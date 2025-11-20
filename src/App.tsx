@@ -5,24 +5,31 @@
  * @format
  */
 
-import { Text, View, Button, Alert } from 'react-native';
+import {Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import Banner from './components/ui/Banner/Banner';
+import store from './store/store';
+import { useEffect, useState } from 'react';
+import CartList from './components/ui/CartList/CartList';
 
-import ProductList from './components/ProductList/ProductList.connected';
-import { AddProductButtonConnected } from './components/AddProductButton/AddProductButton';
+// import store from './store/store';
+
 function App() {
+  const [state, setstate] = useState<Array<TProductCart>>([]);
+  useEffect(() => {
+    setstate(store.getState().cart.products);
+    store.subscribe(() => {
+      setstate(store.getState().cart.products);
+    });
+  }, []);
+  console.log(state);
   return (
-      <SafeAreaProvider>
-        {/* <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} /> */}
-        <View style={{ paddingTop: 25 }}>
-          <AddProductButtonConnected />
-          <Button title="Coucou" onPress={() => Alert.alert('Coucou')} />
-          <Text style={{ textAlign: 'center', fontSize: 18 }}>
-            Liste des produits
-          </Text>
-          <ProductList />
-        </View>
-      </SafeAreaProvider>
+    <SafeAreaProvider style={{ paddingTop: 5 }}>
+      <View>
+        <Banner text="Bienvenue dans ma boutique" />
+      </View>
+      <CartList products={state} />
+    </SafeAreaProvider>
   );
 }
 export default App;

@@ -1,8 +1,8 @@
 import { ScrollView } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import ProductListItem from '../ProductListItem/ProductListItem';
-import { IProductListItem } from '../../interfaces/IProducts';
-import store from '../../store/store';
+import { IProductListItem } from '../../../interfaces/IProducts';
+import store from '../../../store/store';
 interface IProductListProps {
   products: Array<IProductListItem>;
   height?: number;

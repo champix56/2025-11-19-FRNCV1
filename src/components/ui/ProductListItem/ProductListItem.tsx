@@ -1,6 +1,6 @@
 import { View, Text, Image, StyleSheet, Button } from 'react-native';
 import React from 'react';
-import { IProductListItem } from '../../interfaces/IProducts';
+import { IProductListItem } from '../../../interfaces/IProducts';
 
 interface IProductListItemProps {
   produit: IProductListItem;

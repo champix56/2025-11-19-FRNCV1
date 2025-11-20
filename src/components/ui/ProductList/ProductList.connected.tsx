@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ProductListUnconnected from './ProductList';
-import store from '../../store/store';
+import store from '../../../store/store';
 interface IProductListProps {
     height?: number;
   }

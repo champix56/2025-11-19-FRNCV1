@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { IProductListItem, TProductCartList } from '../interfaces/IProducts';
+import { IProductListItem, TProductCart } from '../interfaces/IProducts';
 
 const initialState = {
-  products: [] as Array<TProductCartList>,
+  products: [] as Array<TProductCart>,
 };
 
 const cart = createSlice({
