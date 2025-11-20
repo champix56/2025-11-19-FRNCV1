@@ -1,4 +1,5 @@
 export interface IProductListItem {
+  idcategory?: number;
   id?: number;
   name: string;
   prix: number;

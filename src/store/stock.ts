@@ -3,10 +3,12 @@ import { IProductListItem } from '../interfaces/IProducts';
 import { RESSOURCES_NAMES, REST_ADR } from '../config/constantes';
 interface IStockState {
   products: Array<IProductListItem>;
+  categories?: Array<{id:number}>;
   loaded: boolean;
 }
 const initialState: IStockState = {
   products: [],
+  categories: [],
   loaded: false,
 };
 
@@ -28,7 +30,10 @@ const stock = createSlice({
   },
   extraReducers: builder => {
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
-      state.products = action.payload;
+        console.log(action);
+        
+      state.products = action.payload.products;
+      state.categories = action.payload.categories;
       state.loaded = true;
     });
   },
@@ -42,8 +47,22 @@ export default stockReducer;
 export const fetchProducts = createAsyncThunk(
   'stock/fetchProducts',
   async () => {
-    const promise = await fetch(`${REST_ADR}${RESSOURCES_NAMES.PRODUCTS}`);
-    const data = await promise.json();
+    const promise = fetch(`${REST_ADR}${RESSOURCES_NAMES.PRODUCTS}`);
+    const promise2 = fetch(`${REST_ADR}/categorys`);
+    console.log('fetching products and categories...'); 
+    
+    const prAll=await Promise.all([promise, promise2]);
+    console.log(prAll);
+    
+    const data = {products:await prAll[0].json(),categories:await prAll[1].json()};
+    console.log(data);
     return data;
   },
 );
+// export const validateCart = createAsyncThunk(
+//     'cart/fetchProducts',
+//     async (userId:number) => {
+//         console.log(userId)
+//     },
+//   );
+//   store.dispatch(validateCart(12345));

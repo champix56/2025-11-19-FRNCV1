@@ -1,7 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import stockReducer, { addProductToStock, fetchProducts } from './stock';
-import {products} from '../../db.json'
-import cartReducer, {addProductToCart, removeQuantityProductInCartById} from './cart';
+import stockReducer, { fetchProducts } from './stock';
+import cartReducer from './cart';
 const store = configureStore({
   reducer: {stock:stockReducer, cart:cartReducer},
 });
