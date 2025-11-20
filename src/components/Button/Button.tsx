@@ -1,21 +1,26 @@
 import React from 'react';
-import { View } from 'react-native';
+import { GestureResponderEvent, TouchableOpacity } from 'react-native';
 import style from './Button.style';
 interface IButtonProps {
   children: any;
   meta?: string;
-  bgcolor: 'tomato' | 'skyblue';
+  bgcolor: 'tomato' | 'skyblue' | string;
+  onButtonClick: (arg:GestureResponderEvent) => undefined;
 }
 const Button: React.FC<IButtonProps> = ({
   children,
   meta = 'defaultValue',
   bgcolor = 'tomato',
+  onButtonClick,
 }) => {
   console.log(meta);
   return (
-    <View style={[style.container, { backgroundColor: bgcolor }]}>
+    <TouchableOpacity
+      style={[style.container, { backgroundColor: bgcolor }]}
+      onPress={onButtonClick}
+    >
       {children}
-    </View>
+    </TouchableOpacity>
   );
 };
 
