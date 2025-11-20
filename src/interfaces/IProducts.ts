@@ -5,3 +5,4 @@ export interface IProductListItem {
   stock: number;
   img: string;
 }
+export type TProductCartList = IProductListItem & { quantity: number };
