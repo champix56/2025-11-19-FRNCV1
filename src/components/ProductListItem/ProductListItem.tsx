@@ -59,6 +59,7 @@ const style = StyleSheet.create({
   image: {
     width: 96,
     height: 96,
+    resizeMode: 'contain',
   },
   text: {},
   textValue: {
