@@ -5,42 +5,33 @@
  * @format
  */
 
-import { useEffect, useState } from 'react';
 import {
-  Alert,
-  StatusBar,
   Text,
   useColorScheme,
   View,
   Button,
+  ScrollView,
+  FlatList,
 } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-//import ProductListItem from './components/ProductListItem/ProductListItem';
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-  const [counter, setcounter] = useState(0);
-  const [counter2, setcounter2] = useState(100);
-  useEffect(() => {
-    console.log('counter1:' + counter);
-  }, [counter]);
+import ProductListItem from './components/ProductListItem/ProductListItem';
+import { products } from '../db.json';
 
-  useEffect(() => {
-    console.log('init component');
-    setcounter(1);
-    setcounter2(101);
-    return () => {
-      console.log('demontage du composant');
-    };
-  }, []);
-  // useEffect(() => {
-  //  console.log('tous les refresh!!!!!!');  
-  // })
+function App() {
   return (
     <SafeAreaProvider>
       {/* <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} /> */}
       <View style={{ paddingTop: 25 }}>
-        {/* <View>
-          <ProductListItem
+        <ScrollView style={{ height: 350 }}>
+          {
+            products.map((item,position)=><ProductListItem produit={item} key={item.id}/>)
+          }
+          {/* <FlatList
+            data={products}
+            renderItem={item => <ProductListItem produit={item} />}
+            keyExtractor={(item:any) => item.id}
+          /> */}
+          {/* <ProductListItem
             produit={{
               id: 1,
               name: 'coca zero 33cl',
@@ -66,28 +57,8 @@ function App() {
               prix: 4.85,
               stock: 2,
             }}
-          />
-        </View> */}
-        <View style={{ borderTopWidth: 1, borderTopColor: 'black' }}>
-          <Text style={{ textAlign: 'center' }}>Counter : {counter}</Text>
-          <Button
-            title="Ajouter 1"
-            onPress={() => {
-              setcounter(counter + 1);
-              //console.log(counter);
-            }}
-          />
-        </View>
-        <View style={{ borderTopWidth: 1, borderTopColor: 'black' }}>
-          <Text style={{ textAlign: 'center' }}>Counter : {counter2}</Text>
-          <Button
-            title="Ajouter 1 a c2"
-            onPress={() => {
-              setcounter2(counter2 + 1);
-              //console.log(counter);
-            }}
-          />
-        </View>
+          /> */}
+        </ScrollView>
       </View>
     </SafeAreaProvider>
   );
