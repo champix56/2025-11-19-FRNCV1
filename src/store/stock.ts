@@ -17,6 +17,7 @@ const stock = createSlice({
       state,
       action: { type: string; payload: IProductListItem },
     ) {
+      console.log(action);
       state.products.push(action.payload);
     },
     resetStock(state) {
@@ -24,9 +25,23 @@ const stock = createSlice({
       state.loaded = false;
     },
   },
+  extraReducers: builder => {
+    builder.addCase('cart/addProductToCart', (state, action) => {
+      console.log(
+        '%c%s',
+        'color:red;font-size:25pt;font-weight:900;',
+        'stock extra reducer addProductToCart case',
+      );
+      console.log(action, state);
+    });
+
+    builder.addDefaultCase((state, action) => {
+      console.log('stock extra reducer default case', state, action);
+    });
+  },
 });
 
-export const {resetStock, addProductToStock} = stock.actions;
+export const { resetStock, addProductToStock } = stock.actions;
 
-const stockReducer= stock.reducer;
+const stockReducer = stock.reducer;
 export default stockReducer;
