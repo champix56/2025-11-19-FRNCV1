@@ -3,16 +3,13 @@ import React from 'react';
 
 import { TProductCart } from '../../../interfaces/IProducts';
 import CartListItem from '../CartListItem/CartListItem';
-import store from '../../../store/store';
-import {
-  addProductToCart,
-  removeQuantityProductInCartById,
-} from '../../../store/cart';
 
 interface ICartListItemProps {
   products: Array<TProductCart>;
+  addQuantityProductInCartById: (product: TProductCart) => void;
+  removeQuantityProductInCartById: (id: number) => void;
 }
-const CartList = ({ products }: ICartListItemProps) => {
+const CartList = ({ products, removeQuantityProductInCartById,addQuantityProductInCartById }: ICartListItemProps) => {
   return (
     <View>
       <ScrollView style={style.container}>
@@ -23,11 +20,11 @@ const CartList = ({ products }: ICartListItemProps) => {
               key={product.id}
               onRemoveQuantityChange={() => {
                 if (product.id !== undefined) {
-                  store.dispatch(removeQuantityProductInCartById(product.id));
+                  removeQuantityProductInCartById(product.id);
                 }
               }}
               onAddQuantityChange={() =>
-                store.dispatch(addProductToCart(product))
+               addQuantityProductInCartById(product)
               }
             />
           );
