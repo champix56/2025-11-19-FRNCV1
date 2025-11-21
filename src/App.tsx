@@ -11,6 +11,7 @@ import Banner from './components/ui/Banner/Banner';
 import { Provider } from 'react-redux';
 import store from './store/store';
 import CartList from './components/ui/lists/CartList/CartList.connected';
+import ProductList from './components/ui/lists/ProductList/ProductList.connected';
 // import CartListUC from './components/ui/lists/CartList/CartList';
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <View style={{ paddingTop: 25 }}>
           <Banner text="Ma boutique" />
         </View>
+        <ProductList/>
         <CartList />
         {/* {state.length>0&&<CartListUC products={[{...state[0],quantity:10}]} addQuantityProductInCartById={()=>{}} removeQuantityProductInCartById={()=>{}} />} */}
       </SafeAreaProvider>
