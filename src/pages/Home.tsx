@@ -23,6 +23,7 @@ const Home = () => {
 const style = StyleSheet.create({
   buttonView: {
     padding: 10,
+    marginTop: 30,
   },
 });
 export default Home;
