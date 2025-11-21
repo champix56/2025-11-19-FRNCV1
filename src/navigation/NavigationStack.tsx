@@ -12,7 +12,12 @@ const NavigationStack = () => {
         <Stack.Screen name="Home" component={Home} options={{
           headerShown: false,
         }} />
-        <Stack.Screen name="Cart" component={Cart} />
+        <Stack.Screen name="Cart" component={Cart} options={{
+          title: 'Mon panier',
+          headerStyle: { backgroundColor: '#F7AB8E' },
+          headerTitleStyle: { color: 'white' },
+          headerTintColor: 'white',
+        }} />
         <Stack.Screen name="Products" component={Products} />
       </Stack.Navigator>
     </NavigationContainer>
