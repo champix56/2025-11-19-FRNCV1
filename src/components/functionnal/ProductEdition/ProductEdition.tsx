@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet, Button, TextInput } from 'react-native';
+import { View, Text, Image, StyleSheet, Button, TextInput, Vibration } from 'react-native';
 import React, { useState } from 'react';
 
 import { IProductItem } from '../../../interfaces/IProducts';
@@ -78,6 +78,7 @@ const ProductEdit = ({
       </View>
       <Button title="Annuler" color="#f194ff" onPress={onCancel} />
       <Button title="Valider" color="#ADF0A8" onPress={()=>{
+        Vibration.vibrate(400);
         onSubmit(localProduct);
       }} />
     </>
