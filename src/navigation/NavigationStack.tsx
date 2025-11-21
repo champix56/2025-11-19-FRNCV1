@@ -8,6 +8,7 @@ import Banner from '../components/ui/Banner/Banner';
 import ProductViewer, { IProductViewerProps } from '../pages/ProductViewer';
 import ProductEdit from '../components/functionnal/ProductEdition/ProductEdition';
 import ProductEditor, { IProductEditorProps } from '../pages/ProductEditor';
+import Camera from '../pages/Camera';
 
 
 export type RootStackPramaList = {
@@ -16,6 +17,7 @@ export type RootStackPramaList = {
   Products:undefined;
   ProductView:IProductViewerProps;
   ProductEditor:IProductEditorProps;
+  Camera:undefined;
 }
 
 const Stack = createNativeStackNavigator<RootStackPramaList>();
@@ -67,6 +69,13 @@ const NavigationStack = () => {
           }}
           options={{
             headerTitle:'Edition',
+          }}
+        />
+        <Stack.Screen
+          name="Camera"
+          component={Camera}
+          options={{
+            headerTitle:'Photo d\'article',
           }}
         />
       </Stack.Navigator>
