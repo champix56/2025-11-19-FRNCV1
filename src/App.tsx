@@ -18,9 +18,9 @@ function App() {
     <Provider store={store}>
       <SafeAreaProvider>
         {/* <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} /> */}
-        <View style={{ paddingTop: 25 }}>
+        {/* <View style={{ paddingTop: 25 }}>
           <Banner text="Ma boutique" />
-        </View>
+        </View> */}
        <NavigationStack/>
       </SafeAreaProvider>
     </Provider>
