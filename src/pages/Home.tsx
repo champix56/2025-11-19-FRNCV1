@@ -4,7 +4,7 @@ import React from 'react';
 const Home = () => {
   return (
     <View>
-      <Text>Bienveue</Text>
+      <Text style={{textAlign:'center', marginTop:100, marginBottom:50, fontSize:40, textDecorationLine:'underline'}}>Bienveue</Text>
       <View style={style.buttonView}>
         <Button
           title="Voir produits"
