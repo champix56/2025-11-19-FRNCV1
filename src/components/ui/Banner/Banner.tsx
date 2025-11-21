@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native';
 import React from 'react';
-import CartIcon from '../CartIcon/CartIcon';
+import CartIcon from '../CartIcon/CartIcon.connected';
 import { style } from './Banner.style';
 
 const Banner = ({ text = 'Ma boutique' }) => {
@@ -9,7 +9,7 @@ const Banner = ({ text = 'Ma boutique' }) => {
       <View style={style.left}>
         <Text style={style.title}>{text}</Text>
       </View>
-      <CartIcon quantity={100000}/>
+      <CartIcon/>
     </View>
   );
 };
