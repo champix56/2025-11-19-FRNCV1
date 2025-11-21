@@ -31,7 +31,7 @@ const CartListItem = ({
           }}
         />
         </View>
-        <Text> X {product.prix}€ =<Text style={style.total}>{product.prix * product.quantity}€</Text></Text>
+        <Text> X {product.prix}€ =<Text style={style.total}>{(product.prix * product.quantity).toFixed(2)}€</Text></Text>
       </View>
     </View>
   );
