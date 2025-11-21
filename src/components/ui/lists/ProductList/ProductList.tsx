@@ -5,15 +5,16 @@ import { IProductItem } from '../../../../interfaces/IProducts';
 import store from '../../../../store/store';
 interface IProductListProps {
   products: Array<IProductItem>;
+  onProductViewSelected:(product:IProductItem)=>void;
   height?: number;
 }
 
-const ProductList = ({products, height = 350 }: IProductListProps) => {
+const ProductList = ({products,onProductViewSelected, height = 350 }: IProductListProps) => {
   
   return (
     <ScrollView style={{ height: height }}>
       {products.map(item => (
-        <ProductListItem produit={item} key={item.id} />
+        <ProductListItem produit={item} key={item.id} onProductViewSelected={onProductViewSelected} />
       ))}
     </ScrollView>
   );
