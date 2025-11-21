@@ -6,6 +6,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import Home from '../pages/Home';
 import Banner from '../components/ui/Banner/Banner';
 import ProductViewer from '../pages/ProductViewer';
+import ProductEdit from '../components/functionnal/ProductEdition/ProductEdition';
+import ProductEditor from '../pages/ProductEditor';
 const Stack = createNativeStackNavigator();
 const NavigationStack = () => {
   return (
@@ -46,6 +48,15 @@ const NavigationStack = () => {
             headerTitle: () => {
               return <Banner text="Détails produit" />;
             },
+          }}
+        />
+         <Stack.Screen
+          name="ProductEditor"
+          component={(props: any) => {
+            return <ProductEditor {...props} />;
+          }}
+          options={{
+            headerTitle:'Edition',
           }}
         />
       </Stack.Navigator>
