@@ -5,12 +5,13 @@
  * @format
  */
 
-import {Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Banner from './components/ui/Banner/Banner';
 import store from './store/store';
 import { useEffect, useState } from 'react';
-import CartList from './components/ui/CartList/CartList';
+import CartList from './components/ui/CartList/CartList.connected';
+import { Provider } from 'react-redux';
 
 // import store from './store/store';
 
@@ -24,12 +25,14 @@ function App() {
   }, []);
   console.log(state);
   return (
-    <SafeAreaProvider style={{ paddingTop: 5 }}>
-      <View>
-        <Banner text="Bienvenue dans ma boutique" />
-      </View>
-      <CartList products={state} />
-    </SafeAreaProvider>
+    <Provider store={store}>
+      <SafeAreaProvider style={{ paddingTop: 5 }}>
+        <View>
+          <Banner text="Bienvenue dans ma boutique" />
+        </View>
+        <CartList  />
+      </SafeAreaProvider>
+    </Provider>
   );
 }
 export default App;
