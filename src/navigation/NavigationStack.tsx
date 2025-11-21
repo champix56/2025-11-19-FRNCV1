@@ -9,7 +9,9 @@ const NavigationStack = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Home" component={Home} options={{
+          headerShown: false,
+        }} />
         <Stack.Screen name="Cart" component={Cart} />
         <Stack.Screen name="Products" component={Products} />
       </Stack.Navigator>
