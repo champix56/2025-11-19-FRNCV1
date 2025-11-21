@@ -10,7 +10,10 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Banner from './components/ui/Banner/Banner';
 import { Provider } from 'react-redux';
 import store from './store/store';
+import CartList from './components/ui/lists/CartList/CartList.connected';
+// import CartListUC from './components/ui/lists/CartList/CartList';
 function App() {
+
   return (
     <Provider store={store}>
       <SafeAreaProvider>
@@ -18,6 +21,8 @@ function App() {
         <View style={{ paddingTop: 25 }}>
           <Banner text="Ma boutique" />
         </View>
+        <CartList />
+        {/* {state.length>0&&<CartListUC products={[{...state[0],quantity:10}]} addQuantityProductInCartById={()=>{}} removeQuantityProductInCartById={()=>{}} />} */}
       </SafeAreaProvider>
     </Provider>
   );
