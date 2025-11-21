@@ -2,6 +2,7 @@
   "users": [
     {
       "id": 0,
+      "login": "admin",
       "fullName": "Admin User",
       "email": "admin@monApp.com",
       "password": "admin123",
