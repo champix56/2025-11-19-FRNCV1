@@ -5,10 +5,20 @@ import Products from '../pages/ListProducts';
 import { NavigationContainer } from '@react-navigation/native';
 import Home from '../pages/Home';
 import Banner from '../components/ui/Banner/Banner';
-import ProductViewer from '../pages/ProductViewer';
+import ProductViewer, { IProductViewerProps } from '../pages/ProductViewer';
 import ProductEdit from '../components/functionnal/ProductEdition/ProductEdition';
-import ProductEditor from '../pages/ProductEditor';
-const Stack = createNativeStackNavigator();
+import ProductEditor, { IProductEditorProps } from '../pages/ProductEditor';
+
+
+export type RootStackPramaList = {
+  Home:undefined;
+  Cart: undefined;
+  Products:undefined;
+  ProductView:IProductViewerProps;
+  ProductEditor:IProductEditorProps;
+}
+
+const Stack = createNativeStackNavigator<RootStackPramaList>();
 const NavigationStack = () => {
   return (
     <NavigationContainer>

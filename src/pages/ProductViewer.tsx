@@ -2,15 +2,14 @@ import { Button, View } from 'react-native';
 import React from 'react';
 import Product from '../components/ui/Products/Product';
 import { IProductItem } from '../interfaces/IProducts';
-import { StaticScreenProps, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp, NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackPramaList } from '../navigation/NavigationStack';
 
-// interface IProductViewerProps {
-//   route:
-// }
-const ProductViewer = ({
-  route,
-}: StaticScreenProps<{ product: IProductItem }>) => {
-  const n = useNavigation();
+export type IProductViewerProps = { product: IProductItem };
+type IProps = NativeStackScreenProps<RootStackPramaList,'ProductView'>
+const ProductViewer = ({ route }:IProps) => {
+  const n = useNavigation<NativeStackNavigationProp<RootStackPramaList>>();
   return (
     <View>
       <Product product={route.params.product} onEditClick={() => {}} />
@@ -18,8 +17,7 @@ const ProductViewer = ({
       <Button
         title="Editer"
         onPress={() => {
-          //@ts-ignore
-          n.navigate('ProductEditor' as never, {
+          n.navigate('ProductEditor', {
             product: route.params.product,
           });
         }}
