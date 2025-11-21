@@ -1,9 +1,9 @@
 import { View, Text, Image, StyleSheet, Button } from 'react-native';
 import React from 'react';
-import { IProductListItem } from '../../interfaces/IProducts';
+import { IProductItem } from '../../../../interfaces/IProducts';
 
 interface IProductListItemProps {
-  produit: IProductListItem;
+  produit: IProductItem;
 }
 const ProductListItem: React.FC<IProductListItemProps> = ({ produit }) => {
   return (

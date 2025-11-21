@@ -8,7 +8,7 @@
 import { Text, View, Button, Alert } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import ProductList from './components/ProductList/ProductList.connected';
+import ProductList from './components/ui/lists/ProductList/ProductList.connected';
 import { AddProductButtonConnected } from './components/AddProductButton/AddProductButton';
 function App() {
   return (

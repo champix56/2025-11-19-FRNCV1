@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { IProductListItem, TProductCartList } from '../interfaces/IProducts';
+import { IProductItem, TProductCart } from '../interfaces/IProducts';
 
 const initialState = {
-  products: [] as Array<TProductCartList>,
+  products: [] as Array<TProductCart>,
 };
 
 const cart = createSlice({
@@ -11,7 +11,7 @@ const cart = createSlice({
   reducers: {
     addProductToCart(
       state,
-      action: { type: string; payload: IProductListItem },
+      action: { type: string; payload: IProductItem },
     ) {
       const position = state.products.findIndex(
         p => p.id === action.payload.id,
