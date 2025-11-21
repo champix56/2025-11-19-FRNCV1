@@ -10,19 +10,15 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import ProductList from './components/ui/lists/ProductList/ProductList.connected';
 import { AddProductButtonConnected } from './components/AddProductButton/AddProductButton';
+import Banner from './components/ui/Banner/Banner';
 function App() {
   return (
       <SafeAreaProvider>
         {/* <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} /> */}
         <View style={{ paddingTop: 25 }}>
-          <AddProductButtonConnected />
-          <Button title="Coucou" onPress={() => Alert.alert('Coucou')} />
-          <Text style={{ textAlign: 'center', fontSize: 18 }}>
-            Liste des produits
-          </Text>
-          <ProductList />
+          <Banner text="Ma boutique" />
         </View>
       </SafeAreaProvider>
   );
 }
-export default App;
+export default App
