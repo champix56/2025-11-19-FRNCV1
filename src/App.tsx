@@ -5,20 +5,21 @@
  * @format
  */
 
-import { Text, View, Button, Alert } from 'react-native';
+import { View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-
-import ProductList from './components/ui/lists/ProductList/ProductList.connected';
-import { AddProductButtonConnected } from './components/AddProductButton/AddProductButton';
 import Banner from './components/ui/Banner/Banner';
+import { Provider } from 'react-redux';
+import store from './store/store';
 function App() {
   return (
+    <Provider store={store}>
       <SafeAreaProvider>
         {/* <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} /> */}
         <View style={{ paddingTop: 25 }}>
           <Banner text="Ma boutique" />
         </View>
       </SafeAreaProvider>
+    </Provider>
   );
 }
-export default App
+export default App;
